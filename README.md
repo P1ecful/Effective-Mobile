@@ -1,4 +1,4 @@
-# Go Restful API ApplyToCourier
+# Go Restful API TimeTracker
 
 ## Features
 The following functions are a set for creating this web APIs:
@@ -8,14 +8,17 @@ The following functions are a set for creating this web APIs:
 ## Start Application
   - Clone this repository
   - Create a postgres database. 
-  - Change Data in `config/local.env`
+  - Change Data in `config/config.env`
   - Run the application: `go run main.go`
 
 ## API Routes
-| Path          | Method | Request                       |  Desription                                           |                                    
+| Path          | Method | Request/Exmaple               |  Desription                                           |                                    
 | ------------- | ------ | ----------------------------- | ----------------------------------------------------- |
-| user/create       | GET   |  { "Creator Id": 0, "Item category": "", "Item weight": "", "First Address Phone": "", "Second Address Phone": "", "First Address": { "Street": "",  "Home": 0, "Housing": 0, "Entrance": 0,"Floor": 0, "Flat": 0, "Intercom Code": ""}, "Second Address": { "Street": "",  "Home": 0, "Housing": 0,  "Entrance": 0, "Floor": 0,  "Flat": 0, "Intercom Code": ""}}                             | Add user |   
-| user/delete       | GET   | { "Order Id": 0 }             | Delete user by order ID                                    |     
-| user/update  | GET   | { "Creator Id": 0 }           | Update users data                               |                                |
-
-###### In development...
+| user/create   | GET   | { "Name": "John", "Surname": "Smith", "Address": "green street","Passport Number": "1234567890" } | Add user |   
+| user/delete   | GET   | { "ID": 0 }                    | Delete user                                           |     
+| user/update   | GET   | { "ID": 0, "Name": "John" }    | Update user`s data                                    |      
+| user/get-users| GET   | { "ID": 0, "Name": "John" }    | Get users by filters                                  | 
+| user/get-time | GET   | { "ID": 0 }                    | Get user`s time per a task                            | 
+| task/create   | GET   | { "Task": "Create makefile", "User ID": 0 } | Create task  
+| task/start    | GET   | { "ID": 0 }                    | Start a task(when prompted, enter the task ID)        |     
+| task/finish   | GET   | { "ID": 0 }                    | Finish a task(when prompted, enter the task ID)       |  
