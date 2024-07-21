@@ -56,7 +56,6 @@ func (ts *TaskService) UpdateUser(req *models.UserModel) error {
 	return result.Error
 }
 
-// !FIXME
 func (ts *TaskService) GetSummaryTime(userid int) *SummaryTimeResponse {
 	var test *models.TaskModel
 	result := ts.DB.First(&models.TaskModel{}, userid)
