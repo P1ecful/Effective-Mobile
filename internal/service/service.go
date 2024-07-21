@@ -8,6 +8,10 @@ import (
 	"gorm.io/gorm"
 )
 
+var (
+	location, _ = time.LoadLocation("Europe/Moscow")
+)
+
 type TaskService struct {
 	Log *log.Logger
 	DB  *gorm.DB
@@ -88,8 +92,6 @@ func (ts *TaskService) CreateTask(req *models.TaskModel) error {
 }
 
 func (ts *TaskService) StartTask(id int) error {
-	location, _ := time.LoadLocation("Europe/Moscow")
-
 	result := ts.DB.Model(&models.TaskModel{}).Where("id = ?", id).Updates(&models.TaskModel{
 		StartedAt: time.Now().UTC().In(location),
 	})
@@ -98,7 +100,6 @@ func (ts *TaskService) StartTask(id int) error {
 }
 
 func (ts *TaskService) FinishTask(id int) error {
-	location, _ := time.LoadLocation("Europe/Moscow")
 	var task models.TaskModel
 
 	ts.DB.Model(&models.TaskModel{}).Where("id = ?", id).Updates(&models.TaskModel{
