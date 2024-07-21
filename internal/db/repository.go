@@ -34,8 +34,5 @@ func (r *repository) Connect() *gorm.DB {
 }
 
 func ApplyMigrations(db *gorm.DB) {
-	db.Migrator().DropTable(&models.TaskModel{})
-	db.Migrator().DropTable(&models.UserModel{})
-
 	db.Migrator().AutoMigrate(&models.UserModel{}, &models.TaskModel{})
 }

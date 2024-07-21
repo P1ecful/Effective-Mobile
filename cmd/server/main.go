@@ -47,7 +47,7 @@ func main() {
 
 	// start service and graceful shutdown
 	go func() {
-		if err := wApp.Listen(":1200"); err != nil {
+		if err := wApp.Listen(os.Getenv("SERVICE_PORT")); err != nil {
 			logger.Fatal("Error while listening")
 		}
 	}()
