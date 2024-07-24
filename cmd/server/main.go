@@ -37,7 +37,7 @@ func main() {
 
 	psql, _ := database.DB()
 	db.ApplyMigrations(database)
-	log.Print("Database connected")
+	logger.Print("Database connected")
 
 	// Init WebController, Service, Routes
 	wApp := fiber.New()
